@@ -26,18 +26,6 @@ cl(challenge.endsWith("Script"))
 cl(challenge.match(/a/g))
 cl("30 Days of".concat(" JavaScript"))
 cl(challenge.repeat(2))
-// const array = ["Ola", "Temiloluwa", "Opemipo"]
-// const object = {
-//   first: "Ola",
-//   second: "Temiloluwa",
-//   third: "Opemipo"
-// }
-// const set = new Set(["set1", "set2", "set3"])
-// const map = new Map([[1, "Ola"], [2, "Temiloluwa"], [3, "Opemipo"]])
-// const string = "How to train your dragon"
-// for (const item in map) {
-//   console.log(item)
-// }
 
 //Level 2
 cl(`The quote 'There is no exercise better for the heart than reaching down and lifting people up.' by John Holmes teaches us to help one another.`)
@@ -57,3 +45,4 @@ cl('You cannot end a sentence with because because because is a conjunction'.sub
 
 //Level 3
 cl('Love is the best thing in this world. Some found their love and some are still looking for their love.'.toLowerCase().match(/love/g).length)
+cl('You cannot end a sentence with because because because is a conjunction'.match(/because/g).length)
