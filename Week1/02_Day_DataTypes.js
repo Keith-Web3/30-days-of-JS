@@ -33,7 +33,7 @@ cl("Love is not patronizing and charity isn't about pity, it is about love. Char
 cl(typeof "10" === typeof 10) //check for equality
 cl(typeof Number("10") === typeof 10) //make equal
 cl(parseFloat("9.8")) // check for equality with 10
-cl(Math.round(parseFloat("9.8")))
+cl(Math.round(parseFloat("9.8")))// make equal to 10
 cl("python".includes("on") && "jargon".includes("on"))
 cl("I hope this course is not full of jargon.".includes("jargon"))
 cl(Math.round(Math.random() * 100))
