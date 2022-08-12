@@ -142,3 +142,4 @@ console.log(`${thisDay}/${thisMonth}/${thisYear} ${thisHour}:${thisMinute}`)
 const minutes = `${thisMinute}`.padStart(2, "0")
 const doubleHours = `${thisHour}`.padStart(2, "0")
 console.log(`${thisYear}-${thisMonth}-${thisDay} ${doubleHours}:${minutes}`)
+
