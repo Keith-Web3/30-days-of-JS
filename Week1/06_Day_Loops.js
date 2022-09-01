@@ -133,7 +133,7 @@ function generateRandomLengthedId(length) {
 }
 
 function getRandomHex() {
-  let num = Math.floor((Math.random() * 5) + 1) * 16777215
+  let num = Math.round(Math.random() * Number(parseInt("ffffff", 16)))
   return `#${num.toString(16)}`
 }
 console.log(getRandomHex())
