@@ -229,7 +229,7 @@ const generateRandomMacAddress = function() {
 log(generateRandomMacAddress())
 
 const generateRandomHexaNumber = function() {
-  return `#${Math.round(Math.random() * parseInt("ffffff", 16)).toString(16)}`
+  return `#${Math.round(Math.random() * parseInt("ffffff", 16)).toString(16)}`.padStart(6, "0")
 }
 log(generateRandomHexaNumber())
 
@@ -296,7 +296,7 @@ const returnArrayOfRgbColors = length => {
 log(returnArrayOfRgbColors())
 
 const convertHexaToRgb = hexa => {
-  if (hexa.length === 4) hexa = hexa + hexa.slice(1)
+  if (hexa.length === 4) hexa = hexa[1].repeat(2) + hexa[2].repeat(2) + hexa[3].repeat(2)
   return `rgb(${parseInt(hexa.slice(1, 3), 16)}, ${parseInt(hexa.slice(3, 5), 16)}, ${parseInt(hexa.slice(5), 16)})`
 }
 log(convertHexaToRgb("#fff"))
@@ -322,7 +322,7 @@ const shuffleArray = arr => {
   let copiedArr = [...arr]
   let newArr = []
   while (copiedArr.length) {
-    let index = Math.round(Math.random() * (copiedArr.length - 1))
+    let index = Math.floor(Math.random() * copiedArr.length)
     newArr = [...newArr, copiedArr[index]]
     copiedArr.splice(index, 1)
   }
