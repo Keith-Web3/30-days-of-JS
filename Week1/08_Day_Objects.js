@@ -257,18 +257,15 @@ let products = [
 
 function signUp(username, email, password) {
   if (anotherUsers.some(item => item.username === username)) {
-    log('Username has been taken')
-    return
+    return 'Username has been taken'
   } else if (anotherUsers.some(item => item.email === email)) {
-    log('User already exists. Please sign in')
-    return
+    return 'User already exists. Please sign in'
   }
   let _id = ''
   for (let i = 0; i < 6; i++) {
     _id += Math.round(Math.random() * 100000).toString(30)
   }
   _id = _id.slice(0, 6)
-  log(_id)
   let date = new Date()
   anotherUsers = [
     ...anotherUsers,
@@ -293,7 +290,7 @@ signUp('Keith_Web4', 'coderKeith05@gmail.com', 'tr345')
 
 let currentUser
 function signIn(username, password) {
-  let [user] = anotherUsers.filter(person => person.username === username)
+  let user = anotherUsers.find(person => person.username === username)
   if (!user) return 'User does not exist, please sign-up.'
   if (user.password !== password) return 'Incorrect password'
   user.isLoggedIn = true
@@ -306,19 +303,9 @@ signIn('Keith_Web3', 'tr345')
 function rateProduct(productId, rating) {
   if (!currentUser || !currentUser.isLoggedIn)
     return 'Sign in to rate this product'
-
-  products = products.map(product => {
-    if (productId === product._id) {
-      return {
-        ...product,
-        ratings: [
-          ...product.ratings,
-          { userId: currentUser._id, rate: rating },
-        ],
-      }
-    }
-    return product
-  })
+  products
+    .find(item => item._id === productId)
+    .ratings.push({ userId: currentUser._id, rate: rating })
   return products
 }
 log(rateProduct('aegfal', 3.2))
@@ -330,17 +317,9 @@ function averageRating(productId) {
 log(averageRating('eedfcf'))
 
 function likeProduct(productId) {
-  products = products.map(product => {
-    if (productId !== product._id) return product
-    let index = product.likes.indexOf(currentUser._id)
-    return {
-      ...product,
-      likes:
-        index === -1
-          ? [...product.likes, currentUser._id]
-          : (product.likes.splice(index, 1), product.likes),
-    }
-  })
+  let { likes } = products.find(({ _id }) => productId === _id)
+  let index = likes.indexOf(currentUser._id)
+  index === -1 ? likes.push(currentUser._id) : likes.splice(index, 1)
 }
 likeProduct('hedfcg')
 log(products)
