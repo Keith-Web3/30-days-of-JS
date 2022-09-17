@@ -19,7 +19,7 @@ function tenMostFrequentWords(str) {
   str = str.replace(/[.]/g, "")
   let strWords = new Set(str.split(" "))
   let arr = [...strWords].reduce((acc, word) => {
-    let regExp = new RegExp("\\b" + `${word}` + "\\b", "g")
+    let regExp = new RegExp(`\\b${word}\\b`, "g")
     let matches = str.match(regExp)
     return [...acc, { word, count: matches.length }]
   }, [])

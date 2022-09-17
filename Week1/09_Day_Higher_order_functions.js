@@ -2579,19 +2579,19 @@ function returnObjArr(arr) {
 }
 console.log(returnObjArr(countries))
 
-// let firstTen = countries2.slice(0, 10)
-// console.log(firstTen)
+let firstTen = countries2.slice(0, 10)
+console.log(firstTen)
 
-// let lastTen = countries2.slice(-10)
-// console.log(lastTen)
+let lastTen = countries2.slice(-10)
+console.log(lastTen)
 
-// let obj = returnObjArr(countries2)
-// let mostUsed = ""
-// let numberOfUses = 0
-// for (const key in obj) {
-//   mostUsed = obj[key] > numberOfUses ? (numberOfUses = obj[key], key) : mostUsed
-// }
-// console.log(mostUsed)
+let obj = returnObjArr(countries2)
+let mostUsed = ""
+let numberOfUses = 0
+for (const key in obj) {
+  mostUsed = obj[key] > numberOfUses ? (numberOfUses = obj[key], key) : mostUsed
+}
+console.log(mostUsed)
 
 //By Name
 // function sortCallBack(a, b, num = 0) {

@@ -1,7 +1,3 @@
-const a = [4, 5, 8, 9]
-const b = [3, 4, 5, 7]
-const countries = ['Finland', 'Sweden', 'Norway']
-
 const countries_data = [
   {
     name: 'Afghanistan',
@@ -2261,51 +2257,119 @@ const countries_data = [
   },
 ]
 
-
-let emptySet = new Set()
-console.log(emptySet)
-
-let zeroToTenSet = new Set()
-for (let i = 0; i <= 10; i++) {
-  zeroToTenSet.add(i)
+const constants = [2.72, 3.14, 9.81, 37, 100]
+const countries = ['Finland', 'Estonia', 'Sweden', 'Denmark', 'Norway']
+const rectangle = {
+  width: 20,
+  height: 10,
+  area: 200,
+  perimeter: 60,
 }
-console.log(zeroToTenSet)
+const users = [
+  {
+    name: 'Brook',
+    scores: 75,
+    skills: ['HTM', 'CSS', 'JS'],
+    age: 16,
+  },
+  {
+    name: 'Alex',
+    scores: 80,
+    skills: ['HTM', 'CSS', 'JS'],
+    age: 18,
+  },
+  {
+    name: 'David',
+    scores: 75,
+    skills: ['HTM', 'CSS'],
+    age: 22,
+  },
+  {
+    name: 'John',
+    scores: 85,
+    skills: ['HTML'],
+    age: 25,
+  },
+  {
+    name: 'Sara',
+    scores: 95,
+    skills: ['HTM', 'CSS', 'JS'],
+    age: 26,
+  },
+  {
+    name: 'Martha',
+    scores: 80,
+    skills: ['HTM', 'CSS', 'JS'],
+    age: 18,
+  },
+  {
+    name: 'Thomas',
+    scores: 90,
+    skills: ['HTM', 'CSS', 'JS'],
+    age: 20,
+  },
+]
 
-zeroToTenSet.delete(3)
-console.log(zeroToTenSet)
 
-zeroToTenSet.clear()
-console.log(zeroToTenSet)
+//Level 1
+let [e, pi, gravity, humanBodyTemp, waterBoilingTemp] = constants
 
-zeroToTenSet = new Set(['ab', 'cd', 'ef', 'gh', 'ij'])
-console.log(zeroToTenSet)
+let [fin, est, sw, den, nor] = countries
 
-let countriesMap = new Map()
-for (const country of countries) {
-  countriesMap.set(country, country.length)
-}
-console.log(countriesMap)
-
+let {width, height, area, perimeter} = rectangle
 
 //Level 2
-const aUnionb = [...a, ...b]
-const aInterb = a.filter(item => b.includes(item))
-// TODO number 3
+for (const {name, scores, skills, age} of users) {
+  console.log(name, scores, skills, age)
+}
+
+let lessThanTwoSkills = []
+for (const { name, scores, skills, age } of users) {
+  if (skills.length < 2) lessThanTwoSkills = [...lessThanTwoSkills, name]
+}
+console.log(lessThanTwoSkills)
 
 //Level 3
-let arrOfLanguages = countries_data.map(({languages}) => languages).flat()
-console.log(new Set(arrOfLanguages).size)
-
-function mostSpokenLanguages(arr, length) {
-  let obj = arr.reduce((acc, { languages }) => {
-    for (const language of languages) {
-      let nestedObj = acc.find(obj => Object.hasOwn(obj, language))
-      nestedObj
-        ? nestedObj[language]++
-        : (acc = [...acc, { [language]: 1 }])
-    }
-    return acc
-  }, [])
-  return obj.sort((a, b) => Object.values(b)[0] - Object.values(a)[0]).slice(0, length)
+for (const {name, capital, population, languages} of countries_data) {
+  console.log(name, capital, population, languages)
 }
-console.log(mostSpokenLanguages(countries_data, 3))
+
+const student = ['David', ['HTM', 'CSS', 'JS', 'React'], [98, 85, 90, 95]]
+let [name, skills, [,,jsScore, reactScore]] = student
+console.log(name, skills, jsScore, reactScore)
+
+function convertArrayToObject(arr) {
+  return arr.reduce((acc, [name, skills, scores]) => [...acc, {name, skills, scores}], [])
+}
+const students = [
+    ['David', ['HTM', 'CSS', 'JS', 'React'], [98, 85, 90, 95]],
+    ['John', ['HTM', 'CSS', 'JS', 'React'], [85, 80, 85, 80]]
+  ]
+console.log(convertArrayToObject(students))
+
+const student2 = {
+  name: 'David',
+  age: 25,
+  skills: {
+    frontEnd: [
+      { skill: 'HTML', level: 10 },
+      { skill: 'CSS', level: 8 },
+      { skill: 'JS', level: 8 },
+      { skill: 'React', level: 9 },
+    ],
+    backEnd: [
+      { skill: 'Node', level: 7 },
+      { skill: 'GraphQL', level: 8 },
+    ],
+    dataBase: [{ skill: 'MongoDB', level: 7.5 }],
+    dataScience: ['Python', 'R', 'D3.js'],
+  },
+}
+
+let newStudent = {...student2}
+let {skills: {frontEnd, backEnd, dataBase, dataScience}} = newStudent
+frontEnd.push({skill: "Bootstrap", level: 8})
+backEnd.push({skill: "Express", level: 9})
+dataBase.push({skill: "SQL", level: 8})
+dataScience.push("SQL")
+console.log(newStudent)
